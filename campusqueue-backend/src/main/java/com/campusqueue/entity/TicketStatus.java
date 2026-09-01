@@ -2,8 +2,8 @@ package com.campusqueue.entity;
 
 public enum TicketStatus {
     WAITING,
-    SERVING,
+    CALLED,
     COMPLETED,
-    CANCELLED,
-    SKIPPED
+    SKIPPED,
+    CANCELLED
 }

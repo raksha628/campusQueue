@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 public class TicketResponse {
 
     private Long id;
-    private String tokenNumber;
+    private Integer tokenNumber;
+    private String formattedToken;
     private Long counterId;
     private String counterName;
     private String counterCode;
@@ -31,6 +32,7 @@ public class TicketResponse {
         TicketResponse response = new TicketResponse();
         response.setId(ticket.getId());
         response.setTokenNumber(ticket.getTokenNumber());
+        response.setFormattedToken(ticket.getFormattedToken());
         if (ticket.getCounter() != null) {
             response.setCounterId(ticket.getCounter().getId());
             response.setCounterName(ticket.getCounter().getName());
@@ -61,12 +63,20 @@ public class TicketResponse {
         this.id = id;
     }
 
-    public String getTokenNumber() {
+    public Integer getTokenNumber() {
         return tokenNumber;
     }
 
-    public void setTokenNumber(String tokenNumber) {
+    public void setTokenNumber(Integer tokenNumber) {
         this.tokenNumber = tokenNumber;
+    }
+
+    public String getFormattedToken() {
+        return formattedToken;
+    }
+
+    public void setFormattedToken(String formattedToken) {
+        this.formattedToken = formattedToken;
     }
 
     public Long getCounterId() {

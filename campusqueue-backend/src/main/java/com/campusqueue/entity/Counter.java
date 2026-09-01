@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -16,7 +17,12 @@ import java.time.LocalDateTime;
  * Represents a physical or administrative service desk (e.g., Accounts Office, Placement Cell).
  */
 @Entity
-@Table(name = "counters")
+@Table(
+        name = "counters",
+        indexes = {
+                @Index(name = "idx_counters_code", columnList = "code", unique = true)
+        }
+)
 public class Counter {
 
     @Id

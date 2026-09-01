@@ -8,12 +8,14 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
@@ -22,17 +24,27 @@ import java.time.LocalDateTime;
  * Represents an issued queue token belonging to a student for a specific counter.
  */
 @Entity
-@Table(name = "tickets")
+@Table(
+        name = "tickets",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uk_tickets_counter_token", columnNames = {"counter_id", "token_number"})
+        },
+        indexes = {
+                @Index(name = "idx_tickets_counter_status", columnList = "counter_id, status"),
+                @Index(name = "idx_tickets_user_id", columnList = "user_id"),
+                @Index(name = "idx_tickets_created_at", columnList = "created_at")
+        }
+)
 public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Token number is required")
-    @Size(max = 20, message = "Token number must not exceed 20 characters")
-    @Column(name = "token_number", nullable = false, length = 20)
-    private String tokenNumber;
+    @NotNull(message = "Token number is required")
+    @Positive(message = "Token number must be positive")
+    @Column(name = "token_number", nullable = false)
+    private Integer tokenNumber;
 
     @NotNull(message = "Counter is required")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -65,7 +77,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(String tokenNumber, Counter counter, User user, TicketStatus status) {
+    public Ticket(Integer tokenNumber, Counter counter, User user, TicketStatus status) {
         this.tokenNumber = tokenNumber;
         this.counter = counter;
         this.user = user;
@@ -82,6 +94,16 @@ public class Ticket {
         }
     }
 
+    /**
+     * Helper to get a user-friendly token code like 'ACC-001'.
+     */
+    public String getFormattedToken() {
+        if (counter != null && counter.getCode() != null && tokenNumber != null) {
+            return counter.getCode() + "-" + String.format("%03d", tokenNumber);
+        }
+        return tokenNumber != null ? String.valueOf(tokenNumber) : "";
+    }
+
     // Getters and Setters
 
     public Long getId() {
@@ -92,11 +114,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public String getTokenNumber() {
+    public Integer getTokenNumber() {
         return tokenNumber;
     }
 
-    public void setTokenNumber(String tokenNumber) {
+    public void setTokenNumber(Integer tokenNumber) {
         this.tokenNumber = tokenNumber;
     }
 
@@ -160,7 +182,7 @@ public class Ticket {
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
-                ", tokenNumber='" + tokenNumber + '\'' +
+                ", tokenNumber=" + tokenNumber +
                 ", status=" + status +
                 ", createdAt=" + createdAt +
                 ", calledAt=" + calledAt +

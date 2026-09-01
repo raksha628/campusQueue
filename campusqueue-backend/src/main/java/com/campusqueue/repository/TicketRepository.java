@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -15,42 +14,87 @@ import java.util.Optional;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
-    // --- JPA Derived Methods ---
+    // =========================================================================
+    // 1. Derived JPA Query Methods
+    // =========================================================================
 
-    List<Ticket> findByUserIdAndStatusIn(Long userId, Collection<TicketStatus> statuses);
+    /**
+     * Finds all tickets issued for a specific counter.
+     */
+    List<Ticket> findByCounterId(Long counterId);
 
+    /**
+     * Finds all tickets for a counter ordered chronologically.
+     */
+    List<Ticket> findByCounterIdOrderByCreatedAtAsc(Long counterId);
+
+    /**
+     * Finds all tickets currently in a given status (e.g. WAITING across all counters).
+     */
+    List<Ticket> findByStatus(TicketStatus status);
+
+    /**
+     * Finds all tickets for a specific counter in a specific status (e.g. WAITING queue).
+     */
+    List<Ticket> findByCounterIdAndStatus(Long counterId, TicketStatus status);
+
+    /**
+     * Finds all waiting tickets for a counter ordered by creation time (FIFO queue order).
+     */
     List<Ticket> findByCounterIdAndStatusOrderByCreatedAtAsc(Long counterId, TicketStatus status);
 
-    Optional<Ticket> findFirstByCounterIdAndStatusOrderByCalledAtDesc(Long counterId, TicketStatus status);
+    /**
+     * Finds all tickets created by a specific user/student.
+     */
+    List<Ticket> findByUserId(Long userId);
 
+    /**
+     * Finds all tickets created by a user ordered with newest first.
+     */
+    List<Ticket> findByUserIdOrderByCreatedAtDesc(Long userId);
+
+    /**
+     * Finds active tickets (WAITING or CALLED) for a specific user.
+     */
+    List<Ticket> findByUserIdAndStatusIn(Long userId, Collection<TicketStatus> statuses);
+
+    /**
+     * Checks if a user already has an active ticket for a specific counter.
+     */
     boolean existsByUserIdAndCounterIdAndStatusIn(Long userId, Long counterId, Collection<TicketStatus> statuses);
 
-    // --- Explicit SQL / Native Queries ---
-
     /**
-     * Counts the number of waiting tickets created before this ticket for the same counter (people ahead).
+     * Finds the currently CALLED ticket for a counter.
      */
-    @Query(value = """
-            SELECT COUNT(*) FROM tickets 
-            WHERE counter_id = :counterId 
-              AND status = 'WAITING' 
-              AND created_at < :createdAt
-            """, nativeQuery = true)
-    long countPeopleAhead(@Param("counterId") Long counterId, @Param("createdAt") LocalDateTime createdAt);
+    Optional<Ticket> findFirstByCounterIdAndStatusOrderByCalledAtDesc(Long counterId, TicketStatus status);
 
     /**
-     * Counts how many tickets were generated today for a given counter to build the daily sequence number.
+     * Finds the latest ticket issued for a counter (to retrieve highest token number).
      */
-    @Query(value = """
-            SELECT COUNT(*) FROM tickets 
-            WHERE counter_id = :counterId 
-              AND CAST(created_at AS DATE) = CURRENT_DATE
-            """, nativeQuery = true)
-    long countTodayTicketsByCounterId(@Param("counterId") Long counterId);
+    Optional<Ticket> findTopByCounterIdOrderByTokenNumberDesc(Long counterId);
 
     /**
-     * Calculates the moving average handling time (in minutes) for completed tickets today at this counter.
-     * Defaults to 5.0 minutes if no tickets have been completed yet today.
+     * Counts how many waiting tickets exist ahead of this ticket in the queue
+     * based on sequential token number comparison.
+     */
+    long countByCounterIdAndStatusAndTokenNumberLessThan(Long counterId, TicketStatus status, Integer tokenNumber);
+
+    // =========================================================================
+    // 2. JPQL Query Methods
+    // =========================================================================
+
+    /**
+     * Finds the maximum token number issued for a counter today, defaulting to 0 if none exist.
+     */
+    @Query("SELECT COALESCE(MAX(t.tokenNumber), 0) FROM Ticket t WHERE t.counter.id = :counterId")
+    int findMaxTokenNumberByCounterId(@Param("counterId") Long counterId);
+
+    // =========================================================================
+    // 3. Native SQL Queries (for complex analytics & atomic operations)
+    // =========================================================================
+
+    /**
+     * Computes the moving average handling time in minutes for completed tickets at this counter.
      */
     @Query(value = """
             SELECT COALESCE(AVG(EXTRACT(EPOCH FROM (completed_at - called_at)) / 60.0), 5.0) 
@@ -58,14 +102,12 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             WHERE counter_id = :counterId 
               AND status = 'COMPLETED' 
               AND called_at IS NOT NULL 
-              AND completed_at IS NOT NULL 
-              AND CAST(completed_at AS DATE) = CURRENT_DATE
+              AND completed_at IS NOT NULL
             """, nativeQuery = true)
     Double calculateAverageHandlingTimeMinutes(@Param("counterId") Long counterId);
 
     /**
-     * Concurrency-safe fetch of the next WAITING ticket using PostgreSQL row-level pessimistic locking.
-     * SKIP LOCKED ensures multiple staff desks calling simultaneously do not encounter lock contention or race conditions.
+     * Concurrency-safe retrieval of next waiting ticket using PostgreSQL row-level pessimistic locking.
      */
     @Query(value = """
             SELECT * FROM tickets 

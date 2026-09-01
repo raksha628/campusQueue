@@ -1,2 +1,3 @@
-com\campusqueue\CampusQueueApplicationTests.class
 com\campusqueue\controller\HealthControllerTest.class
+com\campusqueue\controller\TicketControllerTest.class
+com\campusqueue\CampusQueueApplicationTests.class
