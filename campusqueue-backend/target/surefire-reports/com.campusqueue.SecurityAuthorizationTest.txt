@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.campusqueue.SecurityAuthorizationTest
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.727 s -- in com.campusqueue.SecurityAuthorizationTest
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.474 s -- in com.campusqueue.SecurityAuthorizationTest
