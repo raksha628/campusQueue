@@ -18,7 +18,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 /**
- * Represents a student or staff member using the queue management system.
+ * Represents a student, staff, or admin user in the queue management system.
  */
 @Entity
 @Table(
@@ -44,6 +44,9 @@ public class User {
     @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
+    @Column(name = "password_hash", length = 255)
+    private String passwordHash;
+
     @NotNull(message = "Role is required")
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 20)
@@ -59,6 +62,15 @@ public class User {
         this.name = name;
         this.email = email;
         this.role = role;
+        // Default placeholder BCrypt hash for testing/legacy constructor
+        this.passwordHash = "$2a$10$e8w8q3y9x4mK1.J9t5G6kOa/kO918G9XbA/5e3Y9Q.WzX8N.WzX8N";
+    }
+
+    public User(String name, String email, UserRole role, String passwordHash) {
+        this.name = name;
+        this.email = email;
+        this.role = role;
+        this.passwordHash = passwordHash;
     }
 
     @PrePersist
@@ -92,6 +104,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public UserRole getRole() {

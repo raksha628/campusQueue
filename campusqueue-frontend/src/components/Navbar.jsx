@@ -1,61 +1,83 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
 
-export default function Navbar({ activeTab, setActiveTab, users, currentUser, setCurrentUser }) {
+export default function Navbar({ activeTab, setActiveTab }) {
+  const { currentUser, role, logout } = useAuth();
+
+  const isStudent = role === 'STUDENT';
+  const isStaff = role === 'STAFF';
+  const isAdmin = role === 'ADMIN';
+
+  const roleBadgeClass = isStudent
+    ? 'badge-waiting'
+    : isStaff
+    ? 'badge-called'
+    : 'badge-completed';
+
   return (
     <header className="navbar">
       <div className="nav-content">
-        <div className="brand">
+        <div className="brand" onClick={() => setActiveTab('student')} style={{ cursor: 'pointer' }}>
           <div className="brand-icon">CQ</div>
           <span>CampusQueue</span>
         </div>
 
         <nav className="nav-links">
+          {/* Student Desk (Accessible to all authenticated users) */}
           <button
             className={`nav-item ${activeTab === 'student' ? 'active' : ''}`}
             onClick={() => setActiveTab('student')}
           >
             <span>🎓</span> Student Desk
           </button>
-          <button
-            className={`nav-item ${activeTab === 'staff' ? 'active' : ''}`}
-            onClick={() => setActiveTab('staff')}
-          >
-            <span>🏢</span> Staff Queue
-          </button>
-          <button
-            className={`nav-item ${activeTab === 'analytics' ? 'active' : ''}`}
-            onClick={() => setActiveTab('analytics')}
-          >
-            <span>📊</span> Analytics
-          </button>
-          <button
-            className={`nav-item ${activeTab === 'counters' ? 'active' : ''}`}
-            onClick={() => setActiveTab('counters')}
-          >
-            <span>⚙️</span> Counters
-          </button>
+
+          {/* Staff Queue Desk (STAFF and ADMIN only) */}
+          {(isStaff || isAdmin) && (
+            <button
+              className={`nav-item ${activeTab === 'staff' ? 'active' : ''}`}
+              onClick={() => setActiveTab('staff')}
+            >
+              <span>🏢</span> Staff Queue
+            </button>
+          )}
+
+          {/* Analytics (STAFF and ADMIN only) */}
+          {(isStaff || isAdmin) && (
+            <button
+              className={`nav-item ${activeTab === 'analytics' ? 'active' : ''}`}
+              onClick={() => setActiveTab('analytics')}
+            >
+              <span>📊</span> Analytics
+            </button>
+          )}
+
+          {/* Counter Management (ADMIN only) */}
+          {isAdmin && (
+            <button
+              className={`nav-item ${activeTab === 'counters' ? 'active' : ''}`}
+              onClick={() => setActiveTab('counters')}
+            >
+              <span>⚙️</span> Counters
+            </button>
+          )}
         </nav>
 
-        <div className="user-selector-bar">
-          <label htmlFor="user-select"><strong>User:</strong></label>
-          <select
-            id="user-select"
-            value={currentUser?.id || ''}
-            onChange={(e) => {
-              const selected = users.find((u) => u.id === Number(e.target.value));
-              if (selected) setCurrentUser(selected);
-            }}
+        {/* Authenticated User Profile & Logout */}
+        <div className="user-profile-bar">
+          <div className="user-info-text">
+            <span className="user-name-display">{currentUser?.name || 'User'}</span>
+            <span className={`badge ${roleBadgeClass}`} style={{ fontSize: '0.7rem', padding: '1px 6px' }}>
+              {currentUser?.role || 'STUDENT'}
+            </span>
+          </div>
+
+          <button
+            className="btn btn-outline btn-sm"
+            onClick={logout}
+            title="Sign out of CampusQueue"
           >
-            {users.length === 0 ? (
-              <option value="">No users found</option>
-            ) : (
-              users.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {u.name} ({u.role})
-                </option>
-              ))
-            )}
-          </select>
+            Sign Out
+          </button>
         </div>
       </div>
     </header>

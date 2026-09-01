@@ -80,25 +80,27 @@
   background-color: var(--primary-50);
 }
 
-.user-selector-bar {
+.user-profile-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
+  gap: 12px;
+  padding: 6px 14px;
   background-color: var(--slate-50);
   border: 1px solid var(--slate-200);
   border-radius: var(--radius-md);
   font-size: 0.85rem;
 }
 
-.user-selector-bar select {
-  border: 1px solid var(--slate-300);
-  background-color: #ffffff;
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  font-weight: 500;
+.user-info-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-name-display {
+  font-weight: 700;
   color: var(--slate-800);
-  outline: none;
+  font-size: 0.88rem;
 }
 
 /* Main Content Area */
@@ -577,4 +579,63 @@ tbody tr:hover {
   .card-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==========================================================================
+   Login Page & Authentication Styles
+   ========================================================================== */
+
+.login-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--slate-100) 0%, var(--primary-50) 100%);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-lg);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.demo-pill {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  color: var(--slate-700);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.demo-pill:hover {
+  background-color: var(--primary-50);
+  border-color: var(--primary-300);
+  color: var(--primary-800);
+}
+
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--slate-50);
 }

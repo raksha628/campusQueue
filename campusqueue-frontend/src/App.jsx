@@ -4,55 +4,85 @@ import StudentQueue from './pages/StudentQueue';
 import StaffQueuePage from './pages/StaffQueuePage';
 import Analytics from './pages/Analytics';
 import CounterManagement from './pages/CounterManagement';
-import { getAllUsers, createUser } from './services/api';
+import LoginPage from './pages/LoginPage';
+import AccessDenied from './pages/AccessDenied';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
-export default function App() {
+function MainApp() {
+  const { currentUser, role, isAuthenticated, isLoading } = useAuth();
   const [activeTab, setActiveTab] = useState('student');
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoadingUsers, setIsLoadingUsers] = useState(true);
 
-  // Fetch users and initialize active student session
+  // Set appropriate default tab when role is resolved
   useEffect(() => {
-    async function initUsers() {
-      try {
-        let userList = await getAllUsers();
-        if (!userList || userList.length === 0) {
-          // If no users exist yet, seed a default student
-          const defaultStudent = await createUser({
-            name: 'Pooja Hegde',
-            email: 'pooja.student@college.edu',
-            role: 'STUDENT',
-          });
-          userList = [defaultStudent];
-        }
-        setUsers(userList);
-        setCurrentUser(userList[0]);
-      } catch (err) {
-        console.error('Failed to fetch initial users:', err);
-      } finally {
-        setIsLoadingUsers(false);
-      }
+    if (role === 'STAFF') {
+      setActiveTab('staff');
+    } else {
+      setActiveTab('student');
     }
-    initUsers();
-  }, []);
+  }, [role]);
+
+  // Loading Screen (prevents UI flash during session restoration)
+  if (isLoading) {
+    return (
+      <div className="loading-screen">
+        <div className="brand" style={{ marginBottom: '16px' }}>
+          <div className="brand-icon">CQ</div>
+          <span>CampusQueue</span>
+        </div>
+        <span className="spinner spinner-dark" />
+        <div style={{ marginTop: '14px', color: 'var(--slate-500)', fontSize: '0.95rem' }}>
+          Verifying security session...
+        </div>
+      </div>
+    );
+  }
+
+  // If not authenticated, render Login Page
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
+
+  const isStudent = role === 'STUDENT';
+  const isStaff = role === 'STAFF';
+  const isAdmin = role === 'ADMIN';
+
+  // Render tab with Role-Based Route Guards
+  const renderTabContent = () => {
+    if (activeTab === 'student') {
+      return <StudentQueue />;
+    }
+
+    if (activeTab === 'staff') {
+      if (isStudent) {
+        return <AccessDenied requiredRole="STAFF or ADMIN" onReturn={() => setActiveTab('student')} />;
+      }
+      return <StaffQueuePage />;
+    }
+
+    if (activeTab === 'analytics') {
+      if (isStudent) {
+        return <AccessDenied requiredRole="STAFF or ADMIN" onReturn={() => setActiveTab('student')} />;
+      }
+      return <Analytics />;
+    }
+
+    if (activeTab === 'counters') {
+      if (!isAdmin) {
+        return <AccessDenied requiredRole="ADMIN" onReturn={() => setActiveTab('student')} />;
+      }
+      return <CounterManagement />;
+    }
+
+    return <StudentQueue />;
+  };
 
   return (
     <div className="app-container">
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        users={users}
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-      />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="main-content">
-        {activeTab === 'student' && <StudentQueue currentUser={currentUser} />}
-        {activeTab === 'staff' && <StaffQueuePage currentUser={currentUser} />}
-        {activeTab === 'analytics' && <Analytics />}
-        {activeTab === 'counters' && <CounterManagement />}
+        {renderTabContent()}
       </main>
 
       <footer className="footer">
@@ -60,9 +90,17 @@ export default function App() {
           <strong>CampusQueue</strong> — Digital Queue Management System for College Offices & Service Desks.
         </div>
         <div style={{ marginTop: '4px', fontSize: '0.8rem', color: 'var(--slate-400)' }}>
-          Powered by React + Vite + Spring Boot + PostgreSQL
+          Session Authenticated • {currentUser?.name} ({currentUser?.role})
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
   );
 }

@@ -12,14 +12,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Automatically seeds initial demo data (users, counters, tickets)
- * on application startup in non-test profiles if the database is empty.
+ * Automatically seeds initial demo data (users with BCrypt hashed passwords, counters, tickets)
+ * on application startup in non-test profiles and ensures valid password hashes.
  */
 @Component
 @Profile("!test")
@@ -30,35 +32,54 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final CounterRepository counterRepository;
     private final TicketRepository ticketRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public DataInitializer(UserRepository userRepository,
                            CounterRepository counterRepository,
-                           TicketRepository ticketRepository) {
+                           TicketRepository ticketRepository,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.counterRepository = counterRepository;
         this.ticketRepository = ticketRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
+    @Transactional
     public void run(String... args) {
+        String studentHash = passwordEncoder.encode("student123");
+        String staffHash = passwordEncoder.encode("staff123");
+        String adminHash = passwordEncoder.encode("admin123");
+
         if (counterRepository.count() > 0) {
-            log.info("Database already contains data. Skipping initial seeding.");
+            log.info("Database already contains data. Updating password hashes for demo accounts...");
+            userRepository.findAll().forEach(user -> {
+                if (user.getRole() == UserRole.STAFF) {
+                    user.setPasswordHash(staffHash);
+                } else if (user.getRole() == UserRole.ADMIN) {
+                    user.setPasswordHash(adminHash);
+                } else {
+                    user.setPasswordHash(studentHash);
+                }
+                userRepository.save(user);
+            });
+            log.info("Updated password hashes for existing users.");
             return;
         }
 
-        log.info("Seeding initial development data for CampusQueue...");
+        log.info("Seeding initial development data for CampusQueue with secure demo credentials...");
 
-        // 1. Seed Users
-        User rahul = new User("Rahul Sharma", "rahul.sharma@college.edu", UserRole.STUDENT);
-        User priya = new User("Priya Patel", "priya.patel@college.edu", UserRole.STUDENT);
-        User amit = new User("Amit Kumar", "amit.kumar@college.edu", UserRole.STUDENT);
-        User sneha = new User("Sneha Reddy", "sneha.reddy@college.edu", UserRole.STUDENT);
-        User rohan = new User("Rohan Gupta", "rohan.gupta@college.edu", UserRole.STUDENT);
-        User staffAccounts = new User("Dr. Sunita Rao", "sunita.rao@college.edu", UserRole.STAFF);
-        User adminDesk = new User("System Admin", "admin@college.edu", UserRole.ADMIN);
+        // 1. Seed Users with BCrypt Passwords
+        User rahul = new User("Rahul Sharma", "rahul.sharma@college.edu", UserRole.STUDENT, studentHash);
+        User priya = new User("Priya Patel", "priya.patel@college.edu", UserRole.STUDENT, studentHash);
+        User amit = new User("Amit Kumar", "amit.kumar@college.edu", UserRole.STUDENT, studentHash);
+        User sneha = new User("Sneha Reddy", "sneha.reddy@college.edu", UserRole.STUDENT, studentHash);
+        User rohan = new User("Rohan Gupta", "rohan.gupta@college.edu", UserRole.STUDENT, studentHash);
+        User staffAccounts = new User("Dr. Sunita Rao", "sunita.rao@college.edu", UserRole.STAFF, staffHash);
+        User adminDesk = new User("System Admin", "admin@college.edu", UserRole.ADMIN, adminHash);
 
         userRepository.saveAll(List.of(rahul, priya, amit, sneha, rohan, staffAccounts, adminDesk));
-        log.info("Seeded 7 initial users.");
+        log.info("Seeded 7 initial users with BCrypt-hashed credentials.");
 
         // 2. Seed Counters
         Counter accounts = new Counter("Accounts Office", "ACC", "Student fee payments, fine clearances, receipts", true);

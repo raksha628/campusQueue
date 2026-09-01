@@ -1,16 +1,18 @@
 /**
  * CampusQueue Centralized REST API Utility
- * Connects directly to the Spring Boot backend REST endpoints.
+ * Connects directly to the Spring Boot backend REST endpoints with session credentials.
  */
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8081/api';
 
 /**
- * Core fetch wrapper with centralized error handling and JSON parsing.
+ * Core fetch wrapper with centralized error handling, JSON parsing, and session cookies.
  */
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
   const config = {
+    // Crucial for Spring Security session cookie (JSESSIONID) transmission
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
@@ -40,7 +42,7 @@ async function request(endpoint, options = {}) {
     return data;
   } catch (err) {
     if (err.name === 'TypeError' && err.message.includes('fetch')) {
-      const networkError = new Error('Cannot connect to CampusQueue backend server (localhost:8080). Please ensure Spring Boot is running.');
+      const networkError = new Error('Cannot connect to CampusQueue backend server (localhost:8081). Please ensure Spring Boot is running.');
       networkError.status = 0;
       throw networkError;
     }
@@ -49,7 +51,28 @@ async function request(endpoint, options = {}) {
 }
 
 // ==========================================
-// 1. User APIs
+// 1. Authentication APIs
+// ==========================================
+
+export async function login(email, password) {
+  return request('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export async function getMe() {
+  return request('/auth/me');
+}
+
+export async function logout() {
+  return request('/auth/logout', {
+    method: 'POST',
+  });
+}
+
+// ==========================================
+// 2. User APIs
 // ==========================================
 
 export async function getAllUsers() {
@@ -68,7 +91,7 @@ export async function createUser(userData) {
 }
 
 // ==========================================
-// 2. Counter APIs
+// 3. Counter APIs
 // ==========================================
 
 export async function getAllCounters() {
@@ -97,7 +120,7 @@ export async function toggleCounterStatus(id) {
 }
 
 // ==========================================
-// 3. Ticket & Queue APIs
+// 4. Ticket & Queue APIs
 // ==========================================
 
 export async function createTicket(counterId, userId) {
@@ -160,7 +183,7 @@ export async function cancelTicket(ticketId) {
 }
 
 // ==========================================
-// 4. Analytics APIs
+// 5. Analytics APIs
 // ==========================================
 
 export async function getAnalyticsOverview() {

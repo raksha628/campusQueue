@@ -1,0 +1,20 @@
+services:
+  campusqueue-postgres:
+    image: postgres:15-alpine
+    container_name: campusqueue-postgres
+    environment:
+      POSTGRES_DB: campusqueue
+      POSTGRES_USER: campusqueue
+      POSTGRES_PASSWORD: campusqueue
+    ports:
+      - "5433:5432"
+    volumes:
+      - campusqueue-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U campusqueue -d campusqueue" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  campusqueue-postgres-data:

@@ -2,6 +2,7 @@ d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\CampusQueueAppl
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\config\CorsConfig.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\config\DataInitializer.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\controller\AnalyticsController.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\controller\AuthController.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\controller\CounterController.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\controller\HealthController.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\controller\TicketController.java
@@ -13,6 +14,7 @@ d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\projection\
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\request\CreateCounterRequest.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\request\CreateTicketRequest.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\request\CreateUserRequest.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\request\LoginRequest.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\response\AnalyticsOverviewResponse.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\response\BusiestCounterResponse.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\dto\response\CounterPerformanceDto.java
@@ -37,6 +39,10 @@ d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\exception\Resou
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\repository\CounterRepository.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\repository\TicketRepository.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\repository\UserRepository.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\security\CustomUserDetails.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\security\CustomUserDetailsService.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\security\SecurityConfig.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\security\SecurityUtils.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\service\AnalyticsService.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\service\CounterService.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\service\TicketService.java

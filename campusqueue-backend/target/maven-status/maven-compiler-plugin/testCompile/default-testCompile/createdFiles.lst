@@ -1,7 +1,9 @@
+com\campusqueue\SecurityAuthorizationTest.class
 com\campusqueue\controller\TicketControllerTest.class
 com\campusqueue\CampusQueueApplicationTests.class
 com\campusqueue\controller\AnalyticsControllerTest.class
 com\campusqueue\controller\UserControllerTest.class
 com\campusqueue\AnalyticsServiceTest.class
 com\campusqueue\controller\HealthControllerTest.class
+com\campusqueue\controller\AuthControllerTest.class
 com\campusqueue\controller\CounterControllerTest.class

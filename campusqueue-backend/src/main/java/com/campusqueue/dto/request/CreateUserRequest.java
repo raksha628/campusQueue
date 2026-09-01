@@ -20,6 +20,9 @@ public class CreateUserRequest {
     @NotNull(message = "Role is required")
     private UserRole role;
 
+    @Size(min = 6, message = "Password must be at least 6 characters")
+    private String password;
+
     public CreateUserRequest() {
     }
 
@@ -27,6 +30,14 @@ public class CreateUserRequest {
         this.name = name;
         this.email = email;
         this.role = role;
+        this.password = "student123";
+    }
+
+    public CreateUserRequest(String name, String email, UserRole role, String password) {
+        this.name = name;
+        this.email = email;
+        this.role = role;
+        this.password = password;
     }
 
     public String getName() {
@@ -51,5 +62,13 @@ public class CreateUserRequest {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

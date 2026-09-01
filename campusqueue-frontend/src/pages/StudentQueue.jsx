@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import CounterCard from '../components/CounterCard';
 import TicketCard from '../components/TicketCard';
+import { useAuth } from '../context/AuthContext';
 import { getActiveCounters, getQueueStatus, createTicket, getUserTickets, getTicketById, cancelTicket } from '../services/api';
 
-export default function StudentQueue({ currentUser }) {
+export default function StudentQueue() {
+  const { currentUser } = useAuth();
   const [counters, setCounters] = useState([]);
   const [queuesMap, setQueuesMap] = useState({});
   const [activeTicket, setActiveTicket] = useState(null);
@@ -79,7 +81,7 @@ export default function StudentQueue({ currentUser }) {
 
   const handleTakeToken = async (counterId) => {
     if (!currentUser?.id) {
-      setErrorMessage('Please select a student user from the top navigation first.');
+      setErrorMessage('Authentication session expired. Please sign in again.');
       return;
     }
 

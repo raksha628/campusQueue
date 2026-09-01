@@ -13,6 +13,7 @@ import com.campusqueue.exception.ResourceNotFoundException;
 import com.campusqueue.repository.CounterRepository;
 import com.campusqueue.repository.TicketRepository;
 import com.campusqueue.repository.UserRepository;
+import com.campusqueue.security.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,9 +43,13 @@ public class TicketService {
      * 1. Take a ticket:
      * - Acquires a pessimistic row-level lock on the target Counter to serialize token generation per counter.
      * - Generates the next sequential positive token number (scoped independently per counter: #1, #2, #3...).
+     * - Enforces ownership: Students can only generate a token for themselves.
      */
     @Transactional
     public TicketResponse createTicket(CreateTicketRequest request) {
+        // Enforce ownership
+        SecurityUtils.enforceUserOwnership(request.getUserId(), "create a ticket");
+
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + request.getUserId()));
 
@@ -229,11 +234,17 @@ public class TicketService {
     /**
      * 7. Cancel ticket:
      * - Enforces state machine transition: WAITING -> CANCELLED.
+     * - Enforces ownership: Students can only cancel their own ticket.
      */
     @Transactional
     public TicketResponse cancelTicket(Long ticketId) {
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + ticketId));
+
+        // Enforce ownership
+        if (ticket.getUser() != null) {
+            SecurityUtils.enforceUserOwnership(ticket.getUser().getId(), "cancel ticket");
+        }
 
         if (ticket.getStatus() != TicketStatus.WAITING) {
             throw new ConflictException("Cannot cancel ticket: ticket is currently in "
@@ -248,11 +259,18 @@ public class TicketService {
 
     /**
      * Retrieves ticket by ID.
+     * - Enforces ownership: Students can only view their own ticket.
      */
     @Transactional(readOnly = true)
     public TicketResponse getTicketById(Long id) {
         Ticket ticket = ticketRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + id));
+
+        // Enforce ownership
+        if (ticket.getUser() != null) {
+            SecurityUtils.enforceUserOwnership(ticket.getUser().getId(), "view ticket details");
+        }
+
         return mapToTicketResponse(ticket);
     }
 
@@ -296,9 +314,13 @@ public class TicketService {
 
     /**
      * Finds all tickets for a user.
+     * - Enforces ownership: Students can only view their own ticket history.
      */
     @Transactional(readOnly = true)
     public List<TicketResponse> getTicketsByUser(Long userId) {
+        // Enforce ownership
+        SecurityUtils.enforceUserOwnership(userId, "view ticket history");
+
         if (!userRepository.existsById(userId)) {
             throw new ResourceNotFoundException("User not found with id: " + userId);
         }
