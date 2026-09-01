@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.AnalyticsServiceTest" time="14.169" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.AnalyticsServiceTest" time="17.912" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="C:\Users\Sri Raksha M\AppData\Local\Temp\surefire10246356270830917857\surefirebooter-20260901235404132_3.jar C:\Users\Sri Raksha M\AppData\Local\Temp\surefire10246356270830917857 2026-09-01T23-54-03_750-jvmRun1 surefire-20260901235404132_1tmp surefire_0-20260901235404132_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Sri Raksha M\AppData\Local\Temp\surefire9214475548878821621\surefirebooter-20260902000417700_3.jar C:\Users\Sri Raksha M\AppData\Local\Temp\surefire9214475548878821621 2026-09-02T00-04-17_346-jvmRun1 surefire-20260902000417700_1tmp surefire_0-20260902000417700_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="d:\campusQueue\campusqueue-backend\target\test-classes;d:\campusQueue\campusqueue-backend\target\classes;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.3.4\spring-boot-starter-web-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter\3.3.4\spring-boot-starter-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot\3.3.4\spring-boot-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.3.4\spring-boot-autoconfigure-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.3.4\spring-boot-starter-logging-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\ch\qos\logback\logback-classic\1.5.8\logback-classic-1.5.8.jar;C:\Users\Sri Raksha M\.m2\repository\ch\qos\logback\logback-core\1.5.8\logback-core-1.5.8.jar;C:\Users\Sri Raksha M\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.23.1\log4j-to-slf4j-2.23.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.1\log4j-api-2.23.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.3.4\spring-boot-starter-json-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.17.2\jackson-module-parameter-names-2.17.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.3.4\spring-boot-starter-tomcat-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.30\tomcat-embed-core-10.1.30.jar;C:\Users\Sri Raksha M\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.30\tomcat-embed-websocket-10.1.30.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-web\6.1.13\spring-web-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-beans\6.1.13\spring-beans-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\io\micrometer\micrometer-observation\1.13.4\micrometer-observation-1.13.4.jar;C:\Users\Sri Raksha M\.m2\repository\io\micrometer\micrometer-commons\1.13.4\micrometer-commons-1.13.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-webmvc\6.1.13\spring-webmvc-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-aop\6.1.13\spring-aop-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-context\6.1.13\spring-context-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-expression\6.1.13\spring-expression-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.3.4\spring-boot-starter-data-jpa-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.3.4\spring-boot-starter-aop-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.3.4\spring-boot-starter-jdbc-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-jdbc\6.1.13\spring-jdbc-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\hibernate\orm\hibernate-core\6.5.3.Final\hibernate-core-6.5.3.Final.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\Sri Raksha M\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\Sri Raksha M\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\Sri Raksha M\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\Sri Raksha M\.m2\repository\net\bytebuddy\byte-buddy\1.14.19\byte-buddy-1.14.19.jar;C:\Users\Sri Raksha M\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\Sri Raksha M\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\Sri Raksha M\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\Sri Raksha M\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\data\spring-data-jpa\3.3.4\spring-data-jpa-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\data\spring-data-commons\3.3.4\spring-data-commons-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-orm\6.1.13\spring-orm-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-tx\6.1.13\spring-tx-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-aspects\6.1.13\spring-aspects-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.3.4\spring-boot-starter-validation-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.30\tomcat-embed-el-10.1.30.jar;C:\Users\Sri Raksha M\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\postgresql\postgresql\42.7.4\postgresql-42.7.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\Sri Raksha M\.m2\repository\com\h2database\h2\2.2.224\h2-2.2.224.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.3.4\spring-boot-starter-test-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-test\3.3.4\spring-boot-test-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.3.4\spring-boot-test-autoconfigure-3.3.4.jar;C:\Users\Sri Raksha M\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\Sri Raksha M\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\Sri Raksha M\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\Sri Raksha M\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\Sri Raksha M\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\Sri Raksha M\.m2\repository\org\assertj\assertj-core\3.25.3\assertj-core-3.25.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\mockito\mockito-core\5.11.0\mockito-core-5.11.0.jar;C:\Users\Sri Raksha M\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.19\byte-buddy-agent-1.14.19.jar;C:\Users\Sri Raksha M\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Sri Raksha M\.m2\repository\org\mockito\mockito-junit-jupiter\5.11.0\mockito-junit-jupiter-5.11.0.jar;C:\Users\Sri Raksha M\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\Sri Raksha M\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-core\6.1.13\spring-core-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-jcl\6.1.13\spring-jcl-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\springframework\spring-test\6.1.13\spring-test-6.1.13.jar;C:\Users\Sri Raksha M\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\Sri Raksha M\AppData\Local\Temp\surefire10246356270830917857\surefirebooter-20260901235404132_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Sri Raksha M\AppData\Local\Temp\surefire9214475548878821621\surefirebooter-20260902000417700_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.2+12-54"/>
@@ -52,7 +52,7 @@
     <property name="user.dir" value="d:\campusQueue\campusqueue-backend"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="16996"/>
+    <property name="PID" value="15368"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="Cp1252"/>
@@ -65,9 +65,9 @@
     <property name="java.class.version" value="68.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[campusqueue-backend] "/>
   </properties>
-  <testcase name="testCurrentQueueOrderedByToken" classname="com.campusqueue.AnalyticsServiceTest" time="1.307">
-    <system-out><![CDATA[23:54:06.309 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.campusqueue.AnalyticsServiceTest]: AnalyticsServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:54:06.575 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.AnalyticsServiceTest
+  <testcase name="testCurrentQueueOrderedByToken" classname="com.campusqueue.AnalyticsServiceTest" time="1.676">
+    <system-out><![CDATA[00:04:20.004 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.campusqueue.AnalyticsServiceTest]: AnalyticsServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:04:20.495 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.AnalyticsServiceTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,19 +78,19 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2026-09-01T23:54:07.596+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : Starting AnalyticsServiceTest using Java 24.0.2 with PID 16996 (started by Sri Raksha M in d:\campusQueue\campusqueue-backend)
-2026-09-01T23:54:07.598+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : The following 1 profile is active: "test"
-2026-09-01T23:54:09.361+05:30  INFO 16996 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-01T23:54:09.604+05:30  INFO 16996 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 212 ms. Found 3 JPA repository interfaces.
-2026-09-01T23:54:10.487+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-09-01T23:54:11.030+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:campusqueue_test user=SA
-2026-09-01T23:54:11.034+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-09-01T23:54:11.368+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-09-01T23:54:11.560+05:30  INFO 16996 --- [campusqueue-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-09-01T23:54:11.679+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-09-01T23:54:12.463+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-01T23:54:12.580+05:30  WARN 16996 --- [campusqueue-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-09-01T23:54:14.597+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-02T00:04:21.791+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : Starting AnalyticsServiceTest using Java 24.0.2 with PID 15368 (started by Sri Raksha M in d:\campusQueue\campusqueue-backend)
+2026-09-02T00:04:21.797+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : The following 1 profile is active: "test"
+2026-09-02T00:04:23.940+05:30  INFO 15368 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-02T00:04:24.123+05:30  INFO 15368 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 156 ms. Found 3 JPA repository interfaces.
+2026-09-02T00:04:25.326+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-02T00:04:26.012+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:campusqueue_test user=SA
+2026-09-02T00:04:26.028+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-02T00:04:26.428+05:30  INFO 15368 --- [campusqueue-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-02T00:04:26.641+05:30  INFO 15368 --- [campusqueue-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-09-02T00:04:26.763+05:30  INFO 15368 --- [campusqueue-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-02T00:04:27.755+05:30  INFO 15368 --- [campusqueue-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-02T00:04:27.898+05:30  WARN 15368 --- [campusqueue-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-09-02T00:04:30.539+05:30  INFO 15368 --- [campusqueue-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mdrop&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m counters &amp#27;[34mcascade&amp#27;[0m 
 &amp#27;[35m[Hibernate]&amp#27;[0m 
@@ -149,9 +149,9 @@
        &amp#27;[34madd&amp#27;[0m &amp#27;[34mconstraint&amp#27;[0m FK4eqsebpimnjen0q46ja6fl2hl 
        &amp#27;[34mforeign&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (user_id) 
        &amp#27;[34mreferences&amp#27;[0m users
-2026-09-01T23:54:14.709+05:30  INFO 16996 --- [campusqueue-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-01T23:54:15.296+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-09-01T23:54:17.846+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : Started AnalyticsServiceTest in 10.881 seconds (process running for 13.391)
+2026-09-02T00:04:30.644+05:30  INFO 15368 --- [campusqueue-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-02T00:04:31.517+05:30  INFO 15368 --- [campusqueue-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-02T00:04:34.730+05:30  INFO 15368 --- [campusqueue-backend] [           main] com.campusqueue.AnalyticsServiceTest     : Started AnalyticsServiceTest in 13.792 seconds (process running for 16.677)
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -331,7 +331,7 @@ WARNING: If a serviceability tool is not in use, please run with -Djdk.instrumen
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ]]></system-err>
   </testcase>
-  <testcase name="testAverageWaitingTimeCalculation" classname="com.campusqueue.AnalyticsServiceTest" time="0.274">
+  <testcase name="testAverageWaitingTimeCalculation" classname="com.campusqueue.AnalyticsServiceTest" time="0.315">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -486,7 +486,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         &amp#27;[34mAND&amp#27;[0m created_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
 ]]></system-out>
   </testcase>
-  <testcase name="testAnalyticsOverview" classname="com.campusqueue.AnalyticsServiceTest" time="0.159">
+  <testcase name="testAnalyticsOverview" classname="com.campusqueue.AnalyticsServiceTest" time="0.201">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -738,7 +738,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         c.id ASC 
 ]]></system-out>
   </testcase>
-  <testcase name="testDailyTicketVolume" classname="com.campusqueue.AnalyticsServiceTest" time="0.081">
+  <testcase name="testDailyTicketVolume" classname="com.campusqueue.AnalyticsServiceTest" time="0.104">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -894,7 +894,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         &amp#27;[34mdate&amp#27;[0m ASC 
 ]]></system-out>
   </testcase>
-  <testcase name="testEmptyCounterGracefulBehavior" classname="com.campusqueue.AnalyticsServiceTest" time="0.077">
+  <testcase name="testEmptyCounterGracefulBehavior" classname="com.campusqueue.AnalyticsServiceTest" time="0.102">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -1089,7 +1089,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         &amp#27;[34mand&amp#27;[0m t1_0.status=?
 ]]></system-out>
   </testcase>
-  <testcase name="testCounterPerformanceAggregation" classname="com.campusqueue.AnalyticsServiceTest" time="0.092">
+  <testcase name="testCounterPerformanceAggregation" classname="com.campusqueue.AnalyticsServiceTest" time="0.087">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -1264,7 +1264,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         c.id ASC 
 ]]></system-out>
   </testcase>
-  <testcase name="testAverageServiceTimeCalculation" classname="com.campusqueue.AnalyticsServiceTest" time="0.072">
+  <testcase name="testAverageServiceTimeCalculation" classname="com.campusqueue.AnalyticsServiceTest" time="0.075">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -1419,7 +1419,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         &amp#27;[34mAND&amp#27;[0m completed_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
 ]]></system-out>
   </testcase>
-  <testcase name="testBusiestCounter" classname="com.campusqueue.AnalyticsServiceTest" time="0.076">
+  <testcase name="testBusiestCounter" classname="com.campusqueue.AnalyticsServiceTest" time="0.075">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -1587,7 +1587,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
         1 
 ]]></system-out>
   </testcase>
-  <testcase name="testPeakQueueHour" classname="com.campusqueue.AnalyticsServiceTest" time="0.072">
+  <testcase name="testPeakQueueHour" classname="com.campusqueue.AnalyticsServiceTest" time="0.075">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
