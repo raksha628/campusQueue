@@ -3,7 +3,7 @@ package com.campusqueue.service;
 import com.campusqueue.dto.request.CreateUserRequest;
 import com.campusqueue.dto.response.UserResponse;
 import com.campusqueue.entity.User;
-import com.campusqueue.exception.BadRequestException;
+import com.campusqueue.exception.ConflictException;
 import com.campusqueue.exception.ResourceNotFoundException;
 import com.campusqueue.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -23,8 +23,8 @@ public class UserService {
 
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
-        if (userRepository.existsByEmail(request.getEmail().trim())) {
-            throw new BadRequestException("A user with email '" + request.getEmail() + "' already exists");
+        if (userRepository.existsByEmail(request.getEmail().trim().toLowerCase())) {
+            throw new ConflictException("A user with email '" + request.getEmail() + "' already exists");
         }
 
         User user = new User(

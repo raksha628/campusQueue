@@ -5,29 +5,40 @@ import java.util.List;
 
 public class ErrorResponse {
 
+    private LocalDateTime timestamp;
     private int status;
     private String error;
     private String message;
-    private LocalDateTime timestamp;
+    private String path;
     private List<String> details;
 
     public ErrorResponse() {
         this.timestamp = LocalDateTime.now();
     }
 
-    public ErrorResponse(int status, String error, String message) {
+    public ErrorResponse(int status, String error, String message, String path) {
+        this.timestamp = LocalDateTime.now();
         this.status = status;
         this.error = error;
         this.message = message;
-        this.timestamp = LocalDateTime.now();
+        this.path = path;
     }
 
-    public ErrorResponse(int status, String error, String message, List<String> details) {
+    public ErrorResponse(int status, String error, String message, String path, List<String> details) {
+        this.timestamp = LocalDateTime.now();
         this.status = status;
         this.error = error;
         this.message = message;
+        this.path = path;
         this.details = details;
-        this.timestamp = LocalDateTime.now();
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
     public int getStatus() {
@@ -54,12 +65,12 @@ public class ErrorResponse {
         this.message = message;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public String getPath() {
+        return path;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public List<String> getDetails() {

@@ -31,6 +31,7 @@ d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\entity\TicketSt
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\entity\User.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\entity\UserRole.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\exception\BadRequestException.java
+d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\exception\ConflictException.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\exception\GlobalExceptionHandler.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\exception\ResourceNotFoundException.java
 d:\campusQueue\campusqueue-backend\src\main\java\com\campusqueue\repository\CounterRepository.java

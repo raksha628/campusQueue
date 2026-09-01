@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.controller.AnalyticsControllerTest" time="2.576" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.controller.CounterControllerTest" time="0.315" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -65,94 +65,9 @@
     <property name="java.class.version" value="68.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[campusqueue-backend] "/>
   </properties>
-  <testcase name="testGetDailyVolume" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.347">
-    <system-out><![CDATA[2026-09-01T23:54:21.748+05:30  INFO 16996 --- [campusqueue-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.campusqueue.controller.AnalyticsControllerTest]: AnalyticsControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-01T23:54:21.817+05:30  INFO 16996 --- [campusqueue-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.controller.AnalyticsControllerTest
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.3.4)
-
-2026-09-01T23:54:21.906+05:30  INFO 16996 --- [campusqueue-backend] [           main] c.c.controller.AnalyticsControllerTest   : Starting AnalyticsControllerTest using Java 24.0.2 with PID 16996 (started by Sri Raksha M in d:\campusQueue\campusqueue-backend)
-2026-09-01T23:54:21.907+05:30  INFO 16996 --- [campusqueue-backend] [           main] c.c.controller.AnalyticsControllerTest   : The following 1 profile is active: "test"
-2026-09-01T23:54:22.380+05:30  INFO 16996 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-01T23:54:22.411+05:30  INFO 16996 --- [campusqueue-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
-2026-09-01T23:54:22.616+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2026-09-01T23:54:22.619+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:campusqueue_test user=SA
-2026-09-01T23:54:22.620+05:30  INFO 16996 --- [campusqueue-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2026-09-01T23:54:22.670+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-09-01T23:54:22.680+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-09-01T23:54:22.701+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-01T23:54:22.703+05:30  WARN 16996 --- [campusqueue-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-09-01T23:54:22.876+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdrop&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m counters &amp#27;[34mcascade&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdrop&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m tickets &amp#27;[34mcascade&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdrop&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m users &amp#27;[34mcascade&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m &amp#27;[34mtable&amp#27;[0m counters (
-        is_active &amp#27;[34mboolean&amp#27;[0m &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        created_at &amp#27;[34mtimestamp&amp#27;[0m(6) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        id &amp#27;[34mbigint&amp#27;[0m generated &amp#27;[34mby&amp#27;[0m &amp#27;[34mdefault&amp#27;[0m &amp#27;[34mas&amp#27;[0m &amp#27;[34midentity&amp#27;[0m,
-        code &amp#27;[34mvarchar&amp#27;[0m(10) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m &amp#27;[34munique&amp#27;[0m,
-        name &amp#27;[34mvarchar&amp#27;[0m(100) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m &amp#27;[34munique&amp#27;[0m,
-        description &amp#27;[34mvarchar&amp#27;[0m(255),
-        &amp#27;[34mprimary&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (id)
-    )
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m &amp#27;[34mtable&amp#27;[0m tickets (
-        token_number &amp#27;[34minteger&amp#27;[0m &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        called_at &amp#27;[34mtimestamp&amp#27;[0m(6),
-        completed_at &amp#27;[34mtimestamp&amp#27;[0m(6),
-        counter_id &amp#27;[34mbigint&amp#27;[0m &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        created_at &amp#27;[34mtimestamp&amp#27;[0m(6) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        id &amp#27;[34mbigint&amp#27;[0m generated &amp#27;[34mby&amp#27;[0m &amp#27;[34mdefault&amp#27;[0m &amp#27;[34mas&amp#27;[0m &amp#27;[34midentity&amp#27;[0m,
-        user_id &amp#27;[34mbigint&amp#27;[0m &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        remarks &amp#27;[34mvarchar&amp#27;[0m(255),
-        status enum (&amp#27;[36m'&amp#27;[34mCALLED&amp#27;[0m'&amp#27;[0m,&amp#27;[36m'CANCELLED'&amp#27;[0m,&amp#27;[36m'COMPLETED'&amp#27;[0m,&amp#27;[36m'SKIPPED'&amp#27;[0m,&amp#27;[36m'WAITING'&amp#27;[0m) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        &amp#27;[34mprimary&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (id),
-        &amp#27;[34mconstraint&amp#27;[0m uk_tickets_counter_token &amp#27;[34munique&amp#27;[0m (counter_id, token_number)
-    )
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m &amp#27;[34mtable&amp#27;[0m users (
-        created_at &amp#27;[34mtimestamp&amp#27;[0m(6) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        id &amp#27;[34mbigint&amp#27;[0m generated &amp#27;[34mby&amp#27;[0m &amp#27;[34mdefault&amp#27;[0m &amp#27;[34mas&amp#27;[0m &amp#27;[34midentity&amp#27;[0m,
-        name &amp#27;[34mvarchar&amp#27;[0m(100) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        email &amp#27;[34mvarchar&amp#27;[0m(150) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m &amp#27;[34munique&amp#27;[0m,
-        role enum (&amp#27;[36m'ADMIN'&amp#27;[0m,&amp#27;[36m'STAFF'&amp#27;[0m,&amp#27;[36m'STUDENT'&amp#27;[0m) &amp#27;[34mnot&amp#27;[0m &amp#27;[34mnull&amp#27;[0m,
-        &amp#27;[34mprimary&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (id)
-    )
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m index idx_tickets_counter_status 
-       &amp#27;[34mon&amp#27;[0m tickets (counter_id, status)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m index idx_tickets_user_id 
-       &amp#27;[34mon&amp#27;[0m tickets (user_id)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mcreate&amp#27;[0m index idx_tickets_created_at 
-       &amp#27;[34mon&amp#27;[0m tickets (created_at)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34malter&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m tickets 
-       &amp#27;[34madd&amp#27;[0m &amp#27;[34mconstraint&amp#27;[0m FKbgslltow9ngbgoe8mrosi76sj 
-       &amp#27;[34mforeign&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (counter_id) 
-       &amp#27;[34mreferences&amp#27;[0m counters
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34malter&amp#27;[0m &amp#27;[34mtable&amp#27;[0m &amp#27;[34mif&amp#27;[0m &amp#27;[34mexists&amp#27;[0m tickets 
-       &amp#27;[34madd&amp#27;[0m &amp#27;[34mconstraint&amp#27;[0m FK4eqsebpimnjen0q46ja6fl2hl 
-       &amp#27;[34mforeign&amp#27;[0m &amp#27;[34mkey&amp#27;[0m (user_id) 
-       &amp#27;[34mreferences&amp#27;[0m users
-2026-09-01T23:54:22.897+05:30  INFO 16996 --- [campusqueue-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-01T23:54:23.581+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-09-01T23:54:23.582+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-09-01T23:54:23.584+05:30  INFO 16996 --- [campusqueue-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-09-01T23:54:23.607+05:30  INFO 16996 --- [campusqueue-backend] [           main] c.c.controller.AnalyticsControllerTest   : Started AnalyticsControllerTest in 1.781 seconds (process running for 19.152)
+  <testcase name="testGetAllCounters" classname="com.campusqueue.controller.CounterControllerTest" time="0.081">
+    <system-out><![CDATA[2026-09-01T23:54:24.325+05:30  INFO 16996 --- [campusqueue-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.campusqueue.controller.CounterControllerTest]: CounterControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-01T23:54:24.333+05:30  INFO 16996 --- [campusqueue-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.controller.CounterControllerTest
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -166,78 +81,6 @@
         t1_0.user_id 
     &amp#27;[34mfrom&amp#27;[0m
         tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        c1_0.id,
-        c1_0.code,
-        c1_0.created_at,
-        c1_0.description,
-        c1_0.is_active,
-        c1_0.name 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters c1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        counters
-        (code, created_at, description, is_active, name, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(t.created_at &amp#27;[34mAS&amp#27;[0m &amp#27;[34mDATE&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m &amp#27;[34mdate&amp#27;[0m,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m ticketCount 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets t 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(t.created_at &amp#27;[34mAS&amp#27;[0m &amp#27;[34mDATE&amp#27;[0m) 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        &amp#27;[34mdate&amp#27;[0m ASC 
-]]></system-out>
-  </testcase>
-  <testcase name="testGetWaitingQueue" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.085">
-    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         c1_0.id,
@@ -270,12 +113,23 @@
     &amp#27;[34mwhere&amp#27;[0m
         id=?
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34minsert&amp#27;[0m 
     &amp#27;[34minto&amp#27;[0m
@@ -284,27 +138,44 @@
     &amp#27;[34mvalues&amp#27;[0m
         (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
-        count(*) 
+        c1_0.id 
     &amp#27;[34mfrom&amp#27;[0m
         counters c1_0 
     &amp#27;[34mwhere&amp#27;[0m
-        c1_0.id=?
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
 &amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        counters
+        (code, created_at, description, is_active, name, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateCounterSuccess" classname="com.campusqueue.controller.CounterControllerTest" time="0.096">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
         t1_0.called_at,
@@ -316,21 +187,104 @@
         t1_0.token_number,
         t1_0.user_id 
     &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.counter_id=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.status=? 
-    &amp#27;[34morder&amp#27;[0m &amp#27;[34mby&amp#27;[0m
-        t1_0.token_number
+        tickets t1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
-        count(t1_0.id) 
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
     &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters 
     &amp#27;[34mwhere&amp#27;[0m
-        t1_0.counter_id=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.status=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.token_number<?
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        counters
+        (code, created_at, description, is_active, name, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+]]></system-out>
+  </testcase>
+  <testcase name="testGetMissingCounter" classname="com.campusqueue.controller.CounterControllerTest" time="0.036">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         c1_0.id,
@@ -343,29 +297,9 @@
         counters c1_0 
     &amp#27;[34mwhere&amp#27;[0m
         c1_0.id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        u1_0.id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        count(t1_0.id) 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.counter_id=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.status=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.token_number<?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetCounterStats" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.071">
+  <testcase name="testDuplicateCounterCode" classname="com.campusqueue.controller.CounterControllerTest" time="0.037">
     <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         t1_0.id,
@@ -380,17 +314,83 @@
     &amp#27;[34mfrom&amp#27;[0m
         tickets t1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
     &amp#27;[34mfrom&amp#27;[0m
-        tickets 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
+        counters c1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
     &amp#27;[34mfrom&amp#27;[0m
-        tickets 
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
     &amp#27;[34mwhere&amp#27;[0m
-        id=?
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        counters
+        (code, created_at, description, is_active, name, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="testGetCounterById" classname="com.campusqueue.controller.CounterControllerTest" time="0.031">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         c1_0.id,
@@ -417,18 +417,23 @@
     &amp#27;[34mfrom&amp#27;[0m
         users u1_0
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
     &amp#27;[34mfrom&amp#27;[0m
-        users 
+        counters c1_0 
     &amp#27;[34mwhere&amp#27;[0m
-        id=?
+        c1_0.name=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
 &amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        c1_0.code=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34minsert&amp#27;[0m 
     &amp#27;[34minto&amp#27;[0m
@@ -436,13 +441,6 @@
         (code, created_at, description, is_active, name, id) 
     &amp#27;[34mvalues&amp#27;[0m
         (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
 &amp#27;[35m[Hibernate]&amp#27;[0m 
     &amp#27;[34mselect&amp#27;[0m
         c1_0.id,
@@ -455,523 +453,6 @@
         counters c1_0 
     &amp#27;[34mwhere&amp#27;[0m
         c1_0.id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        COALESCE(AVG(EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (called_at - created_at)) / 60.0), 0.0) 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets 
-    &amp#27;[34mWHERE&amp#27;[0m
-        counter_id = ?   
-        &amp#27;[34mAND&amp#27;[0m status = &amp#27;[36m'COMPLETED'&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m created_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        COALESCE(AVG(EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (completed_at - called_at)) / 60.0), 0.0) 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets 
-    &amp#27;[34mWHERE&amp#27;[0m
-        counter_id = ?   
-        &amp#27;[34mAND&amp#27;[0m status = &amp#27;[36m'COMPLETED'&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m completed_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.counter_id=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.status=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.counter_id=? 
-        &amp#27;[34mand&amp#27;[0m t1_0.status=?
-]]></system-out>
-  </testcase>
-  <testcase name="testGetBusiestCounter" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.043">
-    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        c1_0.id,
-        c1_0.code,
-        c1_0.created_at,
-        c1_0.description,
-        c1_0.is_active,
-        c1_0.name 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters c1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        users 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        counters
-        (code, created_at, description, is_active, name, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        c.id &amp#27;[34mAS&amp#27;[0m counterId,
-        c.name &amp#27;[34mAS&amp#27;[0m counterName,
-        c.code &amp#27;[34mAS&amp#27;[0m counterCode,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m handledTickets 
-    &amp#27;[34mFROM&amp#27;[0m
-        counters c 
-    &amp#27;[34mJOIN&amp#27;[0m
-        tickets t 
-            &amp#27;[34mON&amp#27;[0m c.id = t.counter_id 
-    &amp#27;[34mWHERE&amp#27;[0m
-        t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id,
-        c.name,
-        c.code 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        handledTickets DESC,
-        c.id ASC 
-    LIMIT
-        1 
-]]></system-out>
-  </testcase>
-  <testcase name="testGetPerformance" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.043">
-    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        c1_0.id,
-        c1_0.code,
-        c1_0.created_at,
-        c1_0.description,
-        c1_0.is_active,
-        c1_0.name 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters c1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        users 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        counters
-        (code, created_at, description, is_active, name, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        c.id &amp#27;[34mAS&amp#27;[0m counterId,
-        c.name &amp#27;[34mAS&amp#27;[0m counterName,
-        c.code &amp#27;[34mAS&amp#27;[0m counterCode,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m totalTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m completedTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'SKIPPED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m skippedTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'CANCELLED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m cancelledTickets,
-        COALESCE(AVG(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.created_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m                       
-                &amp#27;[34mTHEN&amp#27;[0m EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (t.called_at - t.created_at)) / 60.0 
-        &amp#27;[34mEND&amp#27;[0m), 0.0) &amp#27;[34mAS&amp#27;[0m averageWaitMinutes,
-        COALESCE(AVG(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.completed_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m                       
-                &amp#27;[34mTHEN&amp#27;[0m EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (t.completed_at - t.called_at)) / 60.0 
-        &amp#27;[34mEND&amp#27;[0m), 0.0) &amp#27;[34mAS&amp#27;[0m averageServiceMinutes 
-    &amp#27;[34mFROM&amp#27;[0m
-        counters c 
-    &amp#27;[34mLEFT&amp#27;[0m &amp#27;[34mJOIN&amp#27;[0m
-        tickets t 
-            &amp#27;[34mON&amp#27;[0m c.id = t.counter_id 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id,
-        c.name,
-        c.code 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id ASC 
-]]></system-out>
-  </testcase>
-  <testcase name="testGetPeakHour" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.032">
-    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        c1_0.id,
-        c1_0.code,
-        c1_0.created_at,
-        c1_0.description,
-        c1_0.is_active,
-        c1_0.name 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters c1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        users 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        counters
-        (code, created_at, description, is_active, name, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        tickets
-        (called_at, completed_at, counter_id, created_at, remarks, status, token_number, user_id, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(EXTRACT(&amp#27;[34mHOUR&amp#27;[0m &amp#27;[34mFROM&amp#27;[0m t.created_at) &amp#27;[34mAS&amp#27;[0m &amp#27;[34mINTEGER&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m queueHour,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m ticketCount 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets t 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(EXTRACT(&amp#27;[34mHOUR&amp#27;[0m &amp#27;[34mFROM&amp#27;[0m t.created_at) &amp#27;[34mAS&amp#27;[0m &amp#27;[34mINTEGER&amp#27;[0m) 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        ticketCount DESC,
-        queueHour ASC 
-    LIMIT
-        1 
-]]></system-out>
-  </testcase>
-  <testcase name="testGetOverview" classname="com.campusqueue.controller.AnalyticsControllerTest" time="0.069">
-    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        t1_0.id,
-        t1_0.called_at,
-        t1_0.completed_at,
-        t1_0.counter_id,
-        t1_0.created_at,
-        t1_0.remarks,
-        t1_0.status,
-        t1_0.token_number,
-        t1_0.user_id 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        c1_0.id,
-        c1_0.code,
-        c1_0.created_at,
-        c1_0.description,
-        c1_0.is_active,
-        c1_0.name 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters c1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        counters 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        u1_0.id,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.name,
-        u1_0.role 
-    &amp#27;[34mfrom&amp#27;[0m
-        users u1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mdelete&amp#27;[0m 
-    &amp#27;[34mfrom&amp#27;[0m
-        users 
-    &amp#27;[34mwhere&amp#27;[0m
-        id=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        users
-        (created_at, email, name, role, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34minsert&amp#27;[0m 
-    &amp#27;[34minto&amp#27;[0m
-        counters
-        (code, created_at, description, is_active, name, id) 
-    &amp#27;[34mvalues&amp#27;[0m
-        (?, ?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        count(*) 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        count(t1_0.id) 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.status=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mselect&amp#27;[0m
-        count(t1_0.id) 
-    &amp#27;[34mfrom&amp#27;[0m
-        tickets t1_0 
-    &amp#27;[34mwhere&amp#27;[0m
-        t1_0.status=?
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        COALESCE(AVG(EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (called_at - created_at)) / 60.0), 0.0) 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets 
-    &amp#27;[34mWHERE&amp#27;[0m
-        status = &amp#27;[36m'COMPLETED'&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m created_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        COALESCE(AVG(EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (completed_at - called_at)) / 60.0), 0.0) 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets 
-    &amp#27;[34mWHERE&amp#27;[0m
-        status = &amp#27;[36m'COMPLETED'&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m   
-        &amp#27;[34mAND&amp#27;[0m completed_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        c.id &amp#27;[34mAS&amp#27;[0m counterId,
-        c.name &amp#27;[34mAS&amp#27;[0m counterName,
-        c.code &amp#27;[34mAS&amp#27;[0m counterCode,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m handledTickets 
-    &amp#27;[34mFROM&amp#27;[0m
-        counters c 
-    &amp#27;[34mJOIN&amp#27;[0m
-        tickets t 
-            &amp#27;[34mON&amp#27;[0m c.id = t.counter_id 
-    &amp#27;[34mWHERE&amp#27;[0m
-        t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id,
-        c.name,
-        c.code 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        handledTickets DESC,
-        c.id ASC 
-    LIMIT
-        1 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(EXTRACT(&amp#27;[34mHOUR&amp#27;[0m &amp#27;[34mFROM&amp#27;[0m t.created_at) &amp#27;[34mAS&amp#27;[0m &amp#27;[34mINTEGER&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m queueHour,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m ticketCount 
-    &amp#27;[34mFROM&amp#27;[0m
-        tickets t 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        &amp#27;[34mCAST&amp#27;[0m(EXTRACT(&amp#27;[34mHOUR&amp#27;[0m &amp#27;[34mFROM&amp#27;[0m t.created_at) &amp#27;[34mAS&amp#27;[0m &amp#27;[34mINTEGER&amp#27;[0m) 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        ticketCount DESC,
-        queueHour ASC 
-    LIMIT
-        1 
-&amp#27;[35m[Hibernate]&amp#27;[0m 
-    &amp#27;[34mSELECT&amp#27;[0m
-        c.id &amp#27;[34mAS&amp#27;[0m counterId,
-        c.name &amp#27;[34mAS&amp#27;[0m counterName,
-        c.code &amp#27;[34mAS&amp#27;[0m counterCode,
-        COUNT(t.id) &amp#27;[34mAS&amp#27;[0m totalTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m completedTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'SKIPPED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m skippedTickets,
-        COUNT(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'CANCELLED'&amp#27;[0m 
-                &amp#27;[34mTHEN&amp#27;[0m 1 
-        &amp#27;[34mEND&amp#27;[0m) &amp#27;[34mAS&amp#27;[0m cancelledTickets,
-        COALESCE(AVG(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.created_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m                       
-                &amp#27;[34mTHEN&amp#27;[0m EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (t.called_at - t.created_at)) / 60.0 
-        &amp#27;[34mEND&amp#27;[0m), 0.0) &amp#27;[34mAS&amp#27;[0m averageWaitMinutes,
-        COALESCE(AVG(&amp#27;[34mCASE&amp#27;[0m 
-            &amp#27;[34mWHEN&amp#27;[0m t.status = &amp#27;[36m'COMPLETED'&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.completed_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m 
-            &amp#27;[34mAND&amp#27;[0m t.called_at &amp#27;[34mIS&amp#27;[0m &amp#27;[34mNOT&amp#27;[0m &amp#27;[34mNULL&amp#27;[0m                       
-                &amp#27;[34mTHEN&amp#27;[0m EXTRACT(EPOCH &amp#27;[34mFROM&amp#27;[0m (t.completed_at - t.called_at)) / 60.0 
-        &amp#27;[34mEND&amp#27;[0m), 0.0) &amp#27;[34mAS&amp#27;[0m averageServiceMinutes 
-    &amp#27;[34mFROM&amp#27;[0m
-        counters c 
-    &amp#27;[34mLEFT&amp#27;[0m &amp#27;[34mJOIN&amp#27;[0m
-        tickets t 
-            &amp#27;[34mON&amp#27;[0m c.id = t.counter_id 
-    &amp#27;[34mGROUP&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id,
-        c.name,
-        c.code 
-    &amp#27;[34mORDER&amp#27;[0m &amp#27;[34mBY&amp#27;[0m
-        c.id ASC 
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -3,7 +3,7 @@ package com.campusqueue.service;
 import com.campusqueue.dto.request.CreateCounterRequest;
 import com.campusqueue.dto.response.CounterResponse;
 import com.campusqueue.entity.Counter;
-import com.campusqueue.exception.BadRequestException;
+import com.campusqueue.exception.ConflictException;
 import com.campusqueue.exception.ResourceNotFoundException;
 import com.campusqueue.repository.CounterRepository;
 import org.springframework.stereotype.Service;
@@ -27,10 +27,10 @@ public class CounterService {
         String name = request.getName().trim();
 
         if (counterRepository.existsByName(name)) {
-            throw new BadRequestException("Counter with name '" + name + "' already exists");
+            throw new ConflictException("Counter with name '" + name + "' already exists");
         }
         if (counterRepository.existsByCode(code)) {
-            throw new BadRequestException("Counter with code '" + code + "' already exists");
+            throw new ConflictException("Counter with code '" + code + "' already exists");
         }
 
         Counter counter = new Counter(

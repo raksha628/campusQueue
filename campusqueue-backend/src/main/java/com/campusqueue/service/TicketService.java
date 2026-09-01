@@ -8,6 +8,7 @@ import com.campusqueue.entity.Ticket;
 import com.campusqueue.entity.TicketStatus;
 import com.campusqueue.entity.User;
 import com.campusqueue.exception.BadRequestException;
+import com.campusqueue.exception.ConflictException;
 import com.campusqueue.exception.ResourceNotFoundException;
 import com.campusqueue.repository.CounterRepository;
 import com.campusqueue.repository.TicketRepository;
@@ -40,15 +41,13 @@ public class TicketService {
     /**
      * 1. Take a ticket:
      * - Acquires a pessimistic row-level lock on the target Counter to serialize token generation per counter.
-     * - Generates the next sequential positive token number (scoped independently per counter: #1, #2, #3).
-     * - Prevents race conditions and duplicate token numbers under concurrent requests.
+     * - Generates the next sequential positive token number (scoped independently per counter: #1, #2, #3...).
      */
     @Transactional
     public TicketResponse createTicket(CreateTicketRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + request.getUserId()));
 
-        // Pessimistic lock on the counter row guarantees only one thread creates a token for this counter at a time
         Counter counter = counterRepository.findByIdForUpdate(request.getCounterId())
                 .orElseThrow(() -> new ResourceNotFoundException("Counter not found with id: " + request.getCounterId()));
 
@@ -63,10 +62,9 @@ public class TicketService {
                 List.of(TicketStatus.WAITING, TicketStatus.CALLED)
         );
         if (hasActiveTicket) {
-            throw new BadRequestException("You already hold an active token for " + counter.getName());
+            throw new ConflictException("You already hold an active token for " + counter.getName());
         }
 
-        // Determine next positive sequential token number for this specific counter
         int maxToken = ticketRepository.findMaxTokenNumberByCounterId(counter.getId());
         int nextTokenNumber = maxToken + 1;
 
@@ -78,7 +76,7 @@ public class TicketService {
 
     /**
      * 2. Get queue status:
-     * - Returns real-time queue metrics for a counter (now serving, waiting count, estimated wait, waiting tickets).
+     * - Returns real-time queue metrics for a counter.
      */
     @Transactional(readOnly = true)
     public QueueStatusResponse getQueueStatus(Long counterId) {
@@ -89,7 +87,7 @@ public class TicketService {
                 counterId, TicketStatus.CALLED
         );
 
-        List<Ticket> waitingList = ticketRepository.findByCounterIdAndStatusOrderByCreatedAtAsc(
+        List<Ticket> waitingList = ticketRepository.findByCounterIdAndStatusOrderByTokenNumberAsc(
                 counterId, TicketStatus.WAITING
         );
 
@@ -119,7 +117,37 @@ public class TicketService {
     }
 
     /**
-     * 3. Call next student:
+     * 3. Call a specific ticket:
+     * - Transitions a specific ticket from WAITING -> CALLED.
+     */
+    @Transactional
+    public TicketResponse callTicket(Long ticketId) {
+        Ticket ticket = ticketRepository.findById(ticketId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + ticketId));
+
+        if (ticket.getStatus() != TicketStatus.WAITING) {
+            throw new ConflictException("Cannot call ticket: ticket is in " + ticket.getStatus() + " status (must be WAITING)");
+        }
+
+        // Auto-complete any currently CALLED ticket for this counter
+        if (ticket.getCounter() != null) {
+            ticketRepository.findFirstByCounterIdAndStatusOrderByCalledAtDesc(ticket.getCounter().getId(), TicketStatus.CALLED)
+                    .ifPresent(currentCalled -> {
+                        currentCalled.setStatus(TicketStatus.COMPLETED);
+                        currentCalled.setCompletedAt(LocalDateTime.now());
+                        ticketRepository.save(currentCalled);
+                    });
+        }
+
+        ticket.setStatus(TicketStatus.CALLED);
+        ticket.setCalledAt(LocalDateTime.now());
+        Ticket savedTicket = ticketRepository.save(ticket);
+
+        return mapToTicketResponse(savedTicket);
+    }
+
+    /**
+     * 4. Call next student in queue for a counter:
      * - Auto-completes any existing CALLED ticket at this counter.
      * - Uses atomic PostgreSQL 'FOR UPDATE SKIP LOCKED' to pick the earliest WAITING ticket.
      * - Transitions WAITING -> CALLED.
@@ -141,9 +169,8 @@ public class TicketService {
         Ticket nextTicket = ticketRepository.findNextWaitingTicketForUpdate(counterId)
                 .orElseThrow(() -> new BadRequestException("No students currently waiting for " + counter.getName()));
 
-        // Enforce state machine transition: WAITING -> CALLED
         if (nextTicket.getStatus() != TicketStatus.WAITING) {
-            throw new BadRequestException("Invalid state transition: Cannot call ticket in status " + nextTicket.getStatus());
+            throw new ConflictException("Invalid state transition: Cannot call ticket in status " + nextTicket.getStatus());
         }
 
         nextTicket.setStatus(TicketStatus.CALLED);
@@ -154,9 +181,8 @@ public class TicketService {
     }
 
     /**
-     * 4. Complete ticket:
+     * 5. Complete ticket:
      * - Enforces state machine transition: CALLED -> COMPLETED.
-     * - Sets completedAt timestamp.
      */
     @Transactional
     public TicketResponse completeTicket(Long ticketId, String remarks) {
@@ -164,7 +190,7 @@ public class TicketService {
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + ticketId));
 
         if (ticket.getStatus() != TicketStatus.CALLED) {
-            throw new BadRequestException("Cannot complete ticket: ticket is currently in "
+            throw new ConflictException("Cannot complete ticket: ticket is currently in "
                     + ticket.getStatus() + " status (must be CALLED)");
         }
 
@@ -178,7 +204,7 @@ public class TicketService {
     }
 
     /**
-     * 5. Skip ticket:
+     * 6. Skip ticket:
      * - Enforces state machine transitions: WAITING -> SKIPPED or CALLED -> SKIPPED.
      */
     @Transactional
@@ -187,7 +213,7 @@ public class TicketService {
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + ticketId));
 
         if (ticket.getStatus() != TicketStatus.WAITING && ticket.getStatus() != TicketStatus.CALLED) {
-            throw new BadRequestException("Cannot skip ticket: ticket is already in "
+            throw new ConflictException("Cannot skip ticket: ticket is already in "
                     + ticket.getStatus() + " status");
         }
 
@@ -201,7 +227,7 @@ public class TicketService {
     }
 
     /**
-     * Cancel ticket:
+     * 7. Cancel ticket:
      * - Enforces state machine transition: WAITING -> CANCELLED.
      */
     @Transactional
@@ -210,7 +236,7 @@ public class TicketService {
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found with id: " + ticketId));
 
         if (ticket.getStatus() != TicketStatus.WAITING) {
-            throw new BadRequestException("Cannot cancel ticket: ticket is currently in "
+            throw new ConflictException("Cannot cancel ticket: ticket is currently in "
                     + ticket.getStatus() + " status (only WAITING tickets can be cancelled)");
         }
 
@@ -251,7 +277,7 @@ public class TicketService {
         if (!counterRepository.existsById(counterId)) {
             throw new ResourceNotFoundException("Counter not found with id: " + counterId);
         }
-        return ticketRepository.findByCounterIdAndStatusOrderByCreatedAtAsc(counterId, TicketStatus.WAITING).stream()
+        return ticketRepository.findByCounterIdAndStatusOrderByTokenNumberAsc(counterId, TicketStatus.WAITING).stream()
                 .map(this::mapToTicketResponse)
                 .collect(Collectors.toList());
     }

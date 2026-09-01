@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.controller.HealthControllerTest" time="0.036" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campusqueue.controller.UserControllerTest" time="0.23" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -65,9 +65,296 @@
     <property name="java.class.version" value="68.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[campusqueue-backend] "/>
   </properties>
-  <testcase name="shouldReturnHealthStatus" classname="com.campusqueue.controller.HealthControllerTest" time="0.015">
-    <system-out><![CDATA[2026-09-01T23:54:24.644+05:30  INFO 16996 --- [campusqueue-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.campusqueue.controller.HealthControllerTest]: HealthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-01T23:54:24.654+05:30  INFO 16996 --- [campusqueue-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.controller.HealthControllerTest
+  <testcase name="testCreateUserDuplicateEmail" classname="com.campusqueue.controller.UserControllerTest" time="0.067">
+    <system-out><![CDATA[2026-09-01T23:54:25.309+05:30  INFO 16996 --- [campusqueue-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.campusqueue.controller.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-01T23:54:25.320+05:30  INFO 16996 --- [campusqueue-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.campusqueue.CampusQueueApplication for test class com.campusqueue.controller.UserControllerTest
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        users 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        users 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.email=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        users
+        (created_at, email, name, role, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.email=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="testGetMissingUser" classname="com.campusqueue.controller.UserControllerTest" time="0.026">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        users 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateUserInvalid" classname="com.campusqueue.controller.UserControllerTest" time="0.039">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserSuccess" classname="com.campusqueue.controller.UserControllerTest" time="0.036">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.email=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        users
+        (created_at, email, name, role, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateUserSuccess" classname="com.campusqueue.controller.UserControllerTest" time="0.03">
+    <system-out><![CDATA[&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        t1_0.id,
+        t1_0.called_at,
+        t1_0.completed_at,
+        t1_0.counter_id,
+        t1_0.created_at,
+        t1_0.remarks,
+        t1_0.status,
+        t1_0.token_number,
+        t1_0.user_id 
+    &amp#27;[34mfrom&amp#27;[0m
+        tickets t1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        c1_0.id,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.is_active,
+        c1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        counters c1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        users 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34mselect&amp#27;[0m
+        u1_0.id 
+    &amp#27;[34mfrom&amp#27;[0m
+        users u1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        u1_0.email=? 
+    &amp#27;[34mfetch&amp#27;[0m
+        first ? &amp#27;[34mrows&amp#27;[0m &amp#27;[34monly&amp#27;[0m
+&amp#27;[35m[Hibernate]&amp#27;[0m 
+    &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        users
+        (created_at, email, name, role, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, &amp#27;[34mdefault&amp#27;[0m)
 ]]></system-out>
   </testcase>
 </testsuite>

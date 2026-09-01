@@ -10,6 +10,7 @@ import com.campusqueue.repository.CounterRepository;
 import com.campusqueue.repository.TicketRepository;
 import com.campusqueue.repository.UserRepository;
 import com.campusqueue.service.CounterService;
+import com.campusqueue.service.TicketService;
 import com.campusqueue.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,7 +54,11 @@ class TicketControllerTest {
     @Autowired
     private CounterService counterService;
 
+    @Autowired
+    private TicketService ticketService;
+
     private UserResponse testUser;
+    private UserResponse testUser2;
     private CounterResponse testCounter;
 
     @BeforeEach
@@ -63,11 +68,12 @@ class TicketControllerTest {
         userRepository.deleteAll();
 
         testUser = userService.createUser(new CreateUserRequest("Test Student", "test.student@college.edu", UserRole.STUDENT));
+        testUser2 = userService.createUser(new CreateUserRequest("Second Student", "second.student@college.edu", UserRole.STUDENT));
         testCounter = counterService.createCounter(new CreateCounterRequest("Accounts Desk", "ACC", "Fees"));
     }
 
     @Test
-    @DisplayName("POST /api/tickets - Issues a new ticket and returns 201 CREATED")
+    @DisplayName("10. POST /api/tickets - Issues a new ticket and returns 201 CREATED")
     void shouldCreateTicket() throws Exception {
         CreateTicketRequest request = new CreateTicketRequest(testCounter.getId(), testUser.getId());
 
@@ -84,58 +90,88 @@ class TicketControllerTest {
     }
 
     @Test
-    @DisplayName("GET /api/tickets/counter/{id}/status - Returns complete queue status")
-    void shouldGetQueueStatus() throws Exception {
-        CreateTicketRequest request = new CreateTicketRequest(testCounter.getId(), testUser.getId());
-        mockMvc.perform(post("/api/tickets")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isCreated());
+    @DisplayName("11. GET /api/tickets/{id} - Retrieves ticket by ID with 200 OK")
+    void shouldGetTicketById() throws Exception {
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
 
-        mockMvc.perform(get("/api/tickets/counter/" + testCounter.getId() + "/status")
+        mockMvc.perform(get("/api/tickets/" + ticket.getId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.counterName").value("Accounts Desk"))
-                .andExpect(jsonPath("$.totalWaiting").value(1))
-                .andExpect(jsonPath("$.waitingTickets[0].formattedToken").value("ACC-001"));
+                .andExpect(jsonPath("$.id").value(ticket.getId()))
+                .andExpect(jsonPath("$.formattedToken").value("ACC-001"))
+                .andExpect(jsonPath("$.status").value("WAITING"));
     }
 
     @Test
-    @DisplayName("POST /api/tickets/counter/{id}/call-next - Transitions ticket to CALLED")
-    void shouldCallNextTicket() throws Exception {
-        CreateTicketRequest request = new CreateTicketRequest(testCounter.getId(), testUser.getId());
-        mockMvc.perform(post("/api/tickets")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isCreated());
+    @DisplayName("12. POST /api/tickets/{id}/call - Transitions specific ticket to CALLED")
+    void shouldCallTicketById() throws Exception {
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
 
-        mockMvc.perform(post("/api/tickets/counter/" + testCounter.getId() + "/call-next")
+        mockMvc.perform(post("/api/tickets/" + ticket.getId() + "/call")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(ticket.getId()))
                 .andExpect(jsonPath("$.status").value("CALLED"))
                 .andExpect(jsonPath("$.calledAt").exists());
     }
 
     @Test
-    @DisplayName("PATCH /api/tickets/{id}/complete - Transitions CALLED ticket to COMPLETED")
+    @DisplayName("13. POST /api/tickets/{id}/complete - Transitions CALLED ticket to COMPLETED")
     void shouldCompleteTicket() throws Exception {
-        CreateTicketRequest request = new CreateTicketRequest(testCounter.getId(), testUser.getId());
-        mockMvc.perform(post("/api/tickets")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isCreated());
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
+        ticketService.callTicket(ticket.getId());
 
-        mockMvc.perform(post("/api/tickets/counter/" + testCounter.getId() + "/call-next")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-        Long ticketId = ticketRepository.findAll().get(0).getId();
-
-        mockMvc.perform(patch("/api/tickets/" + ticketId + "/complete")
+        mockMvc.perform(post("/api/tickets/" + ticket.getId() + "/complete")
                         .param("remarks", "Processed successfully"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("COMPLETED"))
                 .andExpect(jsonPath("$.remarks").value("Processed successfully"))
                 .andExpect(jsonPath("$.completedAt").exists());
+    }
+
+    @Test
+    @DisplayName("14. POST /api/tickets/{id}/skip - Transitions WAITING ticket to SKIPPED")
+    void shouldSkipTicket() throws Exception {
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
+
+        mockMvc.perform(post("/api/tickets/" + ticket.getId() + "/skip")
+                        .param("remarks", "Did not respond"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("SKIPPED"))
+                .andExpect(jsonPath("$.remarks").value("Did not respond"));
+    }
+
+    @Test
+    @DisplayName("15. POST /api/tickets/{id}/cancel - Transitions WAITING ticket to CANCELLED")
+    void shouldCancelTicket() throws Exception {
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
+
+        mockMvc.perform(post("/api/tickets/" + ticket.getId() + "/cancel")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("CANCELLED"));
+    }
+
+    @Test
+    @DisplayName("16. POST /api/tickets/{id}/complete - Invalid state transition returns 409 CONFLICT")
+    void shouldRejectInvalidStateTransition() throws Exception {
+        // Ticket is still in WAITING status, cannot complete directly
+        var ticket = ticketService.createTicket(new CreateTicketRequest(testCounter.getId(), testUser.getId()));
+
+        mockMvc.perform(post("/api/tickets/" + ticket.getId() + "/complete"))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.status").value(409))
+                .andExpect(jsonPath("$.error").value("CONFLICT"));
+    }
+
+    @Test
+    @DisplayName("17. GET /api/tickets/{id} - Missing ticket returns 404 NOT FOUND")
+    void shouldReturn404ForMissingTicket() throws Exception {
+        mockMvc.perform(get("/api/tickets/99999")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.status").value(404))
+                .andExpect(jsonPath("$.error").value("NOT_FOUND"))
+                .andExpect(jsonPath("$.path").value("/api/tickets/99999"));
     }
 }

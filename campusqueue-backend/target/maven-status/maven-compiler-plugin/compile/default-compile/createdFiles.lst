@@ -15,6 +15,7 @@ com\campusqueue\entity\User.class
 com\campusqueue\service\TicketService.class
 com\campusqueue\config\DataInitializer.class
 com\campusqueue\repository\UserRepository.class
+com\campusqueue\exception\ConflictException.class
 com\campusqueue\dto\request\CreateUserRequest.class
 com\campusqueue\dto\response\TicketResponse.class
 com\campusqueue\service\CounterService.class
